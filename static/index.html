@@ -397,7 +397,7 @@
     }
 
     async function loadEntries() {
-      const res = await fetch('/api/moods');
+      const res = await fetch('https://mood-tracker-9wf7.onrender.com/api/moods');
       entries = await res.json();
       renderEntries();
     }
@@ -439,7 +439,7 @@
       btn.disabled = true;
       btn.textContent = 'Saving…';
 
-      await fetch('/api/moods', {
+      await fetch('https://mood-tracker-9wf7.onrender.com/api/moods', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ mood: selectedMood.mood, emoji: selectedMood.emoji, note })
@@ -456,7 +456,7 @@
     }
 
     async function deleteEntry(id) {
-      await fetch(`/api/moods/${id}`, { method: 'DELETE' });
+      await fetch(`https://mood-tracker-9wf7.onrender.com/api/moods/${id}`, { method: 'DELETE' });
       await loadEntries();
       showToast('Entry removed');
     }
